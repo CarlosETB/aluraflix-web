@@ -1,4 +1,4 @@
-# Ecoleta (Web)
+# Aluraflix (Web)
 
 <!-- PROJECT SHIELDS -->
 
