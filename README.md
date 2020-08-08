@@ -57,6 +57,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[JavaScript](https://www.javascript.com/)**
 - **[TypeScript](https://www.typescriptlang.org/)**
 - **[Styled Components](https://styled-components.com/)**
+- **[React Router Dom](https://reactrouter.com/)**
 
 \* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
  
