@@ -11,6 +11,7 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <Route component={Home} path="/" exact />
+        <Route component={() => <div>Página 404</div>} path="/" />
       </Switch>
     </BrowserRouter>
   );
