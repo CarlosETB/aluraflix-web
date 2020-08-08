@@ -1,11 +1,17 @@
 import React from "react";
+
+// Native
 import ReactDOM from "react-dom";
-import "./index.css";
+
+// Private
 import App from "./App";
+import "./index.css";
+
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>,
+  </BrowserRouter>,
   document.getElementById("root")
 );

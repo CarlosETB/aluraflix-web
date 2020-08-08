@@ -13,8 +13,8 @@ function getYouTubeId(youtubeURL: string) {
 
 interface LayoutProps {
   url?: string;
-  videoTitle?: string;
-  videoDescription?: string;
+  title?: string;
+  description?: string;
 }
 
 const BannerMain: React.FC<LayoutProps> = (props) => {
@@ -25,9 +25,9 @@ const BannerMain: React.FC<LayoutProps> = (props) => {
     <Container style={{ backgroundImage: `url(${bgUrl})` }}>
       <Content>
         <Item>
-          <Title>{props.videoTitle}</Title>
+          <Title>{props.title}</Title>
 
-          <Description>{props.videoDescription}</Description>
+          <Description>{props.description}</Description>
         </Item>
 
         <Item>
