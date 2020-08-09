@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 // Native
 import styled from "styled-components";
@@ -17,7 +17,11 @@ export const SliderItem = styled.li`
   }
 `;
 
-const Slider = () => {
+interface LayoutProps {
+  children?: ReactNode;
+}
+
+const Slider: React.FC<LayoutProps> = (props) => {
   return (
     <Container>
       <SlickSlider
@@ -29,7 +33,9 @@ const Slider = () => {
           variableWidth: true,
           adaptiveHeight: true,
         }}
-      />
+      >
+        {props.children}
+      </SlickSlider>
     </Container>
   );
 };
