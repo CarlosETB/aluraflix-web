@@ -58,9 +58,7 @@ const VideoCardGroup: React.FC<LayoutProps> = (props) => {
     <Container>
       {categoryTitle && (
         <>
-          <Title style={{ backgroundColor: categoryColor || "red" }}>
-            {categoryTitle}
-          </Title>
+          <Title categoryColor={categoryColor}>{categoryTitle}</Title>
 
           {categoryExtraLink && (
             <ExtraLink href={String(categoryExtraLink.url)} target="_blank">

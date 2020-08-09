@@ -14,7 +14,7 @@ import "./styles.css";
 
 const Header = () => {
   return (
-    <nav className="Menu">
+    <nav id="Header">
       <Link to="/">
         <img className="Logo" src={Logo} alt="AluraFlix logo" />
       </Link>

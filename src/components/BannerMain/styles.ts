@@ -1,5 +1,45 @@
 import styled from "styled-components";
 
+interface PropsContainer {
+  url?: string;
+}
+
+export const Container = styled.section`
+  color: #fff;
+  height: 90vh;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-image: ${(props: PropsContainer) => `url(${props.url})`};
+
+  @media (max-width: 800px) {
+    height: auto;
+    min-height: 50vh;
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 20%;
+  }
+
+  &:before {
+    top: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &:after {
+    bottom: 0;
+    background: linear-gradient(0deg, #141414 0%, transparent 100%);
+  }
+`;
+
 export const Content = styled.section`
   margin-left: 5%;
   margin-right: 5%;
@@ -62,40 +102,6 @@ export const Title = styled.h2`
   @media (max-width: 800px) {
     font-size: 32px;
     text-align: center;
-  }
-`;
-
-export const Container = styled.section`
-  height: 80vh;
-  position: relative;
-  color: #fff;
-  background-size: cover;
-  background-position: center;
-  @media (max-width: 800px) {
-    height: auto;
-    min-height: 50vh;
-  }
-
-  &:after,
-  &:before {
-    content: "";
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    height: 20%;
-  }
-
-  &:before {
-    top: 0;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  &:after {
-    bottom: 0;
-    background: linear-gradient(0deg, #141414 0%, transparent 100%);
   }
 `;
 

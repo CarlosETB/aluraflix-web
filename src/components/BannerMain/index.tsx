@@ -22,7 +22,7 @@ const BannerMain: React.FC<LayoutProps> = (props) => {
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
-    <Container style={{ backgroundImage: `url(${bgUrl})` }}>
+    <Container url={bgUrl}>
       <Content>
         <Item>
           <Title>{props.title}</Title>

@@ -15,7 +15,7 @@ function Home() {
     "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!";
 
   return (
-    <PageDefault>
+    <PageDefault noPadding >
       <BannerMain
         description={description}
         url={initialData.category[0].videos[0].url}

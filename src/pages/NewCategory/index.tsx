@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // Components
 import PageDefault from "components/PageDefault";
 
-function NewCategory() {
+function NewVideo() {
   return (
     <PageDefault>
       <h1>Página de Cadastro de Video</h1>
@@ -16,4 +16,4 @@ function NewCategory() {
   );
 }
 
-export default NewCategory;
+export default NewVideo;
