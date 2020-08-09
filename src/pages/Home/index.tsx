@@ -1,10 +1,11 @@
 import React from "react";
 
 // Components
+import PageDefault from "components/PageDefault";
 import BannerMain from "components/BannerMain";
 import Carousel from "components/Carousel";
 import Footer from "components/Footer";
-import Menu from "components/Menu";
+import Header from "components/Header";
 
 // Data
 import initialData from "data/initial_data.json";
@@ -14,9 +15,7 @@ function Home() {
     "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!";
 
   return (
-    <div style={{ backgroundColor: "#141414" }}>
-      <Menu />
-
+    <PageDefault noPadding >
       <BannerMain
         description={description}
         url={initialData.category[0].videos[0].url}
@@ -29,9 +28,7 @@ function Home() {
       <Carousel ignoreFirstVideo category={initialData.category[3]} />
       <Carousel ignoreFirstVideo category={initialData.category[4]} />
       <Carousel ignoreFirstVideo category={initialData.category[5]} />
-
-      <Footer />
-    </div>
+    </PageDefault>
   );
 }
 

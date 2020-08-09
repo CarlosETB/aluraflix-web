@@ -8,15 +8,14 @@
   }
 }
 
-.Menu {
+#Header {
   width: 100%;
-  height: 94px;
-  z-index: 100;
-
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
+  z-index: 999;
   position: fixed;
   top: 0;
   left: 0;
@@ -28,12 +27,12 @@
   border-bottom: 2px solid var(--primary);
 }
 body {
-  --bodyPaddingTop: 94px;
+  --bodyPaddingTop: 10vh;
   padding-top: var(--bodyPaddingTop);
 }
 
 @media (max-width: 800px) {
-  .Menu {
+  #Header {
     height: 40px;
     justify-content: center;
   }

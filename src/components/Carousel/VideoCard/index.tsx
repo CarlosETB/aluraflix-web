@@ -27,13 +27,11 @@ const VideoCard: React.FC<LayoutProps> = (props) => {
 
   return (
     <VideoCardContainer
-      href={props.videoURL}
+      image={image}
       target="_blank"
-      style={{
-        backgroundImage: `url(${image})`,
-        borderColor: props.categoryColor || "red",
-      }}
+      href={props.videoURL}
       title={props.videoTitle}
+      categoryColor={props.categoryColor}
     />
   );
 };

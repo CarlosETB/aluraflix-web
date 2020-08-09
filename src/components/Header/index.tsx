@@ -1,5 +1,8 @@
 import React from "react";
 
+// Native
+import { Link } from "react-router-dom";
+
 // Components
 import Button from "components/Button";
 
@@ -9,18 +12,18 @@ import { Logo } from "shared/images";
 // Private
 import "./styles.css";
 
-const Menu = () => {
+const Header = () => {
   return (
-    <nav className="Menu">
-      <a>
+    <nav id="Header">
+      <Link to="/">
         <img className="Logo" src={Logo} alt="AluraFlix logo" />
-      </a>
+      </Link>
 
-      <Button as="a" className="ButtonLink" href="/">
+      <Button as={Link} className="ButtonLink" to="/cadastro/video">
         Novo vídeo
       </Button>
     </nav>
   );
 };
 
-export default Menu;
+export default Header;

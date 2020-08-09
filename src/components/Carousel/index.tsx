@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // Private
 import { Container, List, Title, ExtraLink } from "./styles";
 import VideoCard from "./VideoCard";
+import Slider, { SliderItem } from "./Slider";
 
 interface LayoutProps {
   category: {
@@ -32,7 +33,7 @@ interface Link_Extra {
   url: string;
 }
 
-const VideoCardGroup: React.FC<LayoutProps> = (props) => {
+const Carousel: React.FC<LayoutProps> = (props) => {
   const [categoryTitle, setCategoryTitle] = useState("");
   const [categoryColor, setCategoryColor] = useState("");
   const [categoryExtraLink, setCategoryExtraLink] = useState<Link_Extra>();
@@ -58,9 +59,7 @@ const VideoCardGroup: React.FC<LayoutProps> = (props) => {
     <Container>
       {categoryTitle && (
         <>
-          <Title style={{ backgroundColor: categoryColor || "red" }}>
-            {categoryTitle}
-          </Title>
+          <Title categoryColor={categoryColor}>{categoryTitle}</Title>
 
           {categoryExtraLink && (
             <ExtraLink href={String(categoryExtraLink.url)} target="_blank">
@@ -69,25 +68,25 @@ const VideoCardGroup: React.FC<LayoutProps> = (props) => {
           )}
         </>
       )}
-      <List>
+      <Slider>
         {videos.map((video, index) => {
           if (props.ignoreFirstVideo && index === 0) {
             return null;
           }
 
           return (
-            <li key={video.title}>
+            <SliderItem key={video.title}>
               <VideoCard
                 videoURL={String(video.url)}
                 categoryColor={categoryColor}
                 videoTitle={String(video.title)}
               />
-            </li>
+            </SliderItem>
           );
         })}
-      </List>
+      </Slider>
     </Container>
   );
 };
 
-export default VideoCardGroup;
+export default Carousel;
