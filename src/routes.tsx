@@ -7,6 +7,7 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import Home from "pages/Home";
 import NewVideo from "pages/NewVideo";
 import NewCategory from "pages/NewCategory";
+import PageError from "pages/PageError";
 
 const Routes = () => {
   return (
@@ -15,7 +16,7 @@ const Routes = () => {
         <Route component={Home} path="/" exact />
         <Route component={NewVideo} path="/cadastro/video" exact />
         <Route component={NewCategory} path="/cadastro/categoria" exact />
-        <Route component={() => <div>Página 404</div>} path="/" />
+        <Route component={PageError} path="/" />
       </Switch>
     </BrowserRouter>
   );
