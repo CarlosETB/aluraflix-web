@@ -12,7 +12,7 @@ import { Logo } from "shared/images";
 // Private
 import "./styles.css";
 
-const Menu = () => {
+const Header = () => {
   return (
     <nav className="Menu">
       <Link to="/">
@@ -26,4 +26,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default Header;
