@@ -1,5 +1,8 @@
 import React from "react";
 
+// Native
+import { Link } from "react-router-dom";
+
 // Components
 import Button from "components/Button";
 
@@ -12,11 +15,11 @@ import "./styles.css";
 const Menu = () => {
   return (
     <nav className="Menu">
-      <a>
+      <Link to="/">
         <img className="Logo" src={Logo} alt="AluraFlix logo" />
-      </a>
+      </Link>
 
-      <Button as="a" className="ButtonLink" href="/">
+      <Button as={Link} className="ButtonLink" to="/cadastro/video">
         Novo vídeo
       </Button>
     </nav>

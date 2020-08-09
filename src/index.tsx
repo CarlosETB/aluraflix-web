@@ -4,14 +4,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 // Private
-import App from "./App";
+import Routes from "./routes";
 import "./index.css";
 
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Routes />
   </BrowserRouter>,
   document.getElementById("root")
 );
