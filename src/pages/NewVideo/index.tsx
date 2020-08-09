@@ -9,9 +9,18 @@ import PageDefault from "components/PageDefault";
 function NewCategory() {
   return (
     <PageDefault>
-      <h1>Página de Cadastro de Video</h1>
+      <h1>Cadastro de Categoria</h1>
 
-      <Link to="/cadastro/categoria">Cadastrar Categoria</Link>
+      <form>
+        <label>
+          Nome da Categoria:
+          <input type="text" />
+        </label>
+
+        <button>Cadastrar</button>
+      </form>
+
+      <Link to="/">Ir pra home</Link>
     </PageDefault>
   );
 }

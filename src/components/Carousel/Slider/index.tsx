@@ -22,20 +22,18 @@ interface LayoutProps {
 }
 
 const Slider: React.FC<LayoutProps> = (props) => {
+  const settings = {
+    dots: false,
+    infinite: false,
+    speed: 300,
+    centerMode: false,
+    variableWidth: true,
+    adaptiveHeight: true,
+  };
+
   return (
     <Container>
-      <SlickSlider
-        {...{
-          dots: false,
-          infinite: false,
-          speed: 300,
-          centerMode: false,
-          variableWidth: true,
-          adaptiveHeight: true,
-        }}
-      >
-        {props.children}
-      </SlickSlider>
+      <SlickSlider {...settings}>{props.children}</SlickSlider>
     </Container>
   );
 };
