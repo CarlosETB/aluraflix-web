@@ -8,7 +8,7 @@ import Carousel from "components/Carousel";
 // Data
 import initialData from "data/initial_data.json";
 
-function Home() {
+const Home = () => {
   let description =
     "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!";
 
@@ -28,6 +28,6 @@ function Home() {
       <Carousel ignoreFirstVideo category={initialData.category[5]} />
     </PageDefault>
   );
-}
+};
 
 export default Home;

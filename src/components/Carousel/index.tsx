@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 // Private
-import { Container, List, Title, ExtraLink } from "./styles";
-import VideoCard from "./VideoCard";
+import { Container, Title, ExtraLink } from "./styles";
 import Slider, { SliderItem } from "./Slider";
+import VideoCard from "./VideoCard";
 
 interface LayoutProps {
   category: {
