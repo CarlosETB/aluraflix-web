@@ -18,6 +18,12 @@ const NewCategory = () => {
     setFormData({ ...formData, [name]: value });
   }
 
+  function handleTextAreaChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    const { name, value } = event.target;
+
+    setFormData({ ...formData, [name]: value });
+  }
+
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
@@ -30,7 +36,7 @@ const NewCategory = () => {
     setCategories([...categories, name]);
 
     alert(`
-      Nova categoria cadastrada: ${name} 
+      Nova categoria cadastrada: ${formData} 
     `);
   }
 
@@ -57,8 +63,7 @@ const NewCategory = () => {
             <textarea
               id="description"
               name="description"
-              type="text"
-              onChange={handleInputChange}
+              onChange={handleTextAreaChange}
             />
           </label>
         </div>

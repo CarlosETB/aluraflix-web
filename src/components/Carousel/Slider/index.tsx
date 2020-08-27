@@ -21,7 +21,7 @@ interface LayoutProps {
   children?: ReactNode;
 }
 
-const Slider: React.FC<LayoutProps> = (props) => {
+const Slider: React.FC<LayoutProps> = ({ children }) => {
   const settings = {
     dots: false,
     infinite: false,
@@ -33,7 +33,7 @@ const Slider: React.FC<LayoutProps> = (props) => {
 
   return (
     <Container>
-      <SlickSlider {...settings}>{props.children}</SlickSlider>
+      <SlickSlider {...settings}>{children}</SlickSlider>
     </Container>
   );
 };

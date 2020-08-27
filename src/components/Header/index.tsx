@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // Components
-import Button from "components/Button";
+import { Button } from "components/Button";
 
 // Shared
 import { Logo } from "shared/images";

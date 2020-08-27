@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Components
-import Btn from "components/Button";
+import { Button as Btn } from "components/Button";
 
 export const Container = styled.div`
   flex: 1;

@@ -10,7 +10,11 @@ export const Container = styled.div`
   }
 `;
 
-export const ResponsiveIframe = styled.iframe`
+export const ResponsiveIframe = styled.iframe.attrs({
+  frameBorder: "0",
+  allowFullScreen: true,
+  allow: "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+})`
   position: absolute;
   top: 0;
   left: 0;

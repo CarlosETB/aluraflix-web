@@ -34,25 +34,31 @@ interface Link_Extra {
 }
 
 const Carousel: React.FC<LayoutProps> = (props) => {
+  const { category: { title, color, link_extra, videos }, ignoreFirstVideo } = props
+
   const [categoryTitle, setCategoryTitle] = useState("");
   const [categoryColor, setCategoryColor] = useState("");
   const [categoryExtraLink, setCategoryExtraLink] = useState<Link_Extra>();
-  const [videos, setVideos] = useState<Videos[]>([]);
+  const [video, setVideo] = useState<Videos[]>([]);
+
+  async function handleValues() {
+    if (title !== undefined) {
+      setCategoryTitle(String(title));
+    }
+    if (color !== undefined) {
+      setCategoryColor(String(color));
+    }
+    if (link_extra !== undefined) {
+      setCategoryExtraLink(link_extra);
+    }
+
+    if (videos !== undefined) {
+      setVideo(videos);
+    }
+  }
 
   useEffect(() => {
-    if (props.category.title !== undefined) {
-      setCategoryTitle(String(props.category.title));
-    }
-    if (props.category.color !== undefined) {
-      setCategoryColor(String(props.category.color));
-    }
-    if (props.category.link_extra !== undefined) {
-      setCategoryExtraLink(props.category.link_extra);
-    }
-
-    if (props.category.videos !== undefined) {
-      setVideos(props.category.videos);
-    }
+    handleValues()
   }, []);
 
   return (
@@ -69,8 +75,8 @@ const Carousel: React.FC<LayoutProps> = (props) => {
         </>
       )}
       <Slider>
-        {videos.map((video, index) => {
-          if (props.ignoreFirstVideo && index === 0) {
+        {video.map((video, index) => {
+          if (ignoreFirstVideo && index === 0) {
             return null;
           }
 
