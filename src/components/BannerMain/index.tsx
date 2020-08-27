@@ -18,16 +18,19 @@ interface LayoutProps {
 }
 
 const BannerMain: React.FC<LayoutProps> = (props) => {
-  const youTubeID = getYouTubeId(String(props.url));
+  const { title, description, url } = props
+
+  const youTubeID = getYouTubeId(String(
+    url));
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
     <Container url={bgUrl}>
       <Content>
         <Item>
-          <Title>{props.title}</Title>
+          <Title>{title}</Title>
 
-          <Description>{props.description}</Description>
+          <Description>{description}</Description>
         </Item>
 
         <Item>

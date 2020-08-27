@@ -17,11 +17,13 @@ interface LayoutProps {
 }
 
 const VideoCard: React.FC<LayoutProps> = (props) => {
+  const { videoURL, videoTitle, categoryColor } = props
+
   const [image, setImage] = useState("");
 
   useEffect(() => {
     setImage(
-      `https://img.youtube.com/vi/${getYouTubeId(props.videoURL)}/hqdefault.jpg`
+      `https://img.youtube.com/vi/${getYouTubeId(videoURL)}/hqdefault.jpg`
     );
   }, []);
 
@@ -29,9 +31,9 @@ const VideoCard: React.FC<LayoutProps> = (props) => {
     <VideoCardContainer
       image={image}
       target="_blank"
-      href={props.videoURL}
-      title={props.videoTitle}
-      categoryColor={props.categoryColor}
+      href={videoURL}
+      title={videoTitle}
+      categoryColor={categoryColor}
     />
   );
 };

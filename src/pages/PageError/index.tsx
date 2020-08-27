@@ -6,7 +6,7 @@ import Header from "components/Header";
 // Private
 import { Container, Content, Title, Text, Button } from "./styles";
 
-function PageError() {
+const PageError = () => {
   let title = "Você se perdeu?";
   let text =
     "Infelizmente, não localizamos essa página. Você encontra muitos outros títulos na página inicial.";
@@ -21,6 +21,6 @@ function PageError() {
       </Content>
     </Container>
   );
-}
+};
 
 export default PageError;

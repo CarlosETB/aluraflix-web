@@ -19,8 +19,37 @@ export const Container = styled.ul`
 
   .slick-prev {
     left: 0;
+    width: 35px;
+    background-color: #00000040;
+    height: 100%;
   }
   .slick-next {
-    right: 16px;
+    right: 0;
+    background-color: #00000040;
+    width: 35px;
+    height: 100%;
+  }
+  @media (max-width: 640px) {
+    .slick-prev,
+    .slick-next {
+      background-color: #00000000;
+    }
+
+    .slick-prev:before,
+    .slick-next:before {
+      display: none;
+    }
+  }
+  .slick-prev:before {
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f053";
+    font-size: 30px;
+    font-weight: 900;
+  }
+  .slick-next:before {
+    font-family: "Font Awesome\ 5 Free";
+    content: "\f054";
+    font-size: 30px;
+    font-weight: 900;
   }
 `;

@@ -13,10 +13,12 @@ interface LayoutProps {
 }
 
 const PageDefault: React.FC<LayoutProps> = (props) => {
+  const { noPadding, children } = props
+
   return (
     <>
       <Header />
-      <Main noPadding={props.noPadding}>{props.children}</Main>
+      <Main noPadding={noPadding}>{children}</Main>
       <Footer />
     </>
   );

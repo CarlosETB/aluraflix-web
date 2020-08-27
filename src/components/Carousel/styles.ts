@@ -38,20 +38,6 @@ export const ExtraLink = styled.a`
   }
 `;
 
-export const List = styled.ul`
-  margin: 0;
-  padding-left: 0;
-  padding-bottom: 32px;
-  list-style: none;
-  display: flex;
-  overflow-x: auto;
-  flex-direction: row;
-
-  li {
-    margin-right: 16px;
-  }
-`;
-
 export const Container = styled.section`
   color: white;
   min-height: 197px;

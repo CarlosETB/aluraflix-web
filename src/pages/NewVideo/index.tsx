@@ -6,23 +6,14 @@ import { Link } from "react-router-dom";
 // Components
 import PageDefault from "components/PageDefault";
 
-function NewCategory() {
+const NewVideo = () => {
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria</h1>
+      <h1>Página de Cadastro de Video</h1>
 
-      <form>
-        <label>
-          Nome da Categoria:
-          <input type="text" />
-        </label>
-
-        <button>Cadastrar</button>
-      </form>
-
-      <Link to="/">Ir pra home</Link>
+      <Link to="/cadastro/categoria">Cadastrar Categoria</Link>
     </PageDefault>
   );
-}
+};
 
-export default NewCategory;
+export default NewVideo;

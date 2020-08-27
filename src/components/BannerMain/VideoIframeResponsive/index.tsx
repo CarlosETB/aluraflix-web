@@ -7,15 +7,12 @@ interface LayoutProps {
   youtubeID?: string;
 }
 
-const YouTubeIframeResponsive: React.FC<LayoutProps> = (props) => {
+const YouTubeIframeResponsive: React.FC<LayoutProps> = ({ youtubeID }) => {
   return (
     <Container>
       <ResponsiveIframe
         title="Titulo do Iframe"
-        src={`https://www.youtube.com/embed/${props.youtubeID}?autoplay=0&mute=1`}
-        frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
+        src={`https://www.youtube.com/embed/${youtubeID}?autoplay=0&mute=1`}
       />
     </Container>
   );
