@@ -59,6 +59,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[Styled Components](https://styled-components.com/)**
 - **[React Router Dom](https://reactrouter.com/)**
 - **[React Slick](https://react-slick.neostack.com/)**
+- **[i18next](https://www.i18next.com/)**
+- **[React i18next](https://www.i18next.com/)**
+
 
 \* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
 
