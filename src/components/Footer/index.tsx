@@ -1,9 +1,14 @@
 import React from "react";
 
+// Native
+import { useTranslation } from 'react-i18next'
+
 // Private
 import { FooterBase } from "./styles";
 
 const Footer = () => {
+  const { t } = useTranslation('Footer')
+
   return (
     <FooterBase>
       <a href="https://www.alura.com.br/">
@@ -13,8 +18,8 @@ const Footer = () => {
         />
       </a>
       <p>
-        Orgulhosamente criado durante a <br />
-        <a href="https://www.alura.com.br/">Imersão React da Alura</a>
+        {t('preText')}<br />
+        <a href="https://www.alura.com.br/">{t('title')}</a>
       </p>
     </FooterBase>
   );

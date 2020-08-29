@@ -12,11 +12,7 @@ import Carousel from "components/Carousel";
 import initialData from "data/initial_data.json";
 
 const Home = () => {
-
   const { t } = useTranslation('Home')
-
-  let description =
-    "O que é Front-end? Trabalhando na área os termos HTML, CSS e JavaScript fazem parte da rotina das desenvolvedoras e desenvolvedores. Mas o que eles fazem, afinal? Descubra com a Vanessa!";
 
   return (
     <PageDefault noPadding>

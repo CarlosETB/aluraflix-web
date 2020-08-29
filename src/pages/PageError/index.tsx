@@ -1,5 +1,8 @@
 import React from "react";
 
+// Native
+import { useTranslation } from 'react-i18next'
+
 // Components
 import Header from "components/Header";
 
@@ -7,17 +10,15 @@ import Header from "components/Header";
 import { Container, Content, Title, Text, Button } from "./styles";
 
 const PageError = () => {
-  let title = "Você se perdeu?";
-  let text =
-    "Infelizmente, não localizamos essa página. Você encontra muitos outros títulos na página inicial.";
+  const { t } = useTranslation('PageError')
 
   return (
     <Container>
       <Header />
       <Content>
-        <Title>{title}</Title>
-        <Text>{text}</Text>
-        <Button>Página Inicial da Aluraflix</Button>
+        <Title>{t('title')}</Title>
+        <Text>{t('text')}</Text>
+        <Button>{t('button')}</Button>
       </Content>
     </Container>
   );
