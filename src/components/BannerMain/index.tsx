@@ -1,5 +1,8 @@
 import React from "react";
 
+// Native
+import { useTranslation } from 'react-i18next'
+
 // Private
 import { Container, Content, Button, Item, Description, Title } from "./styles";
 import VideoIframeResponsive from "./VideoIframeResponsive";
@@ -20,8 +23,9 @@ interface LayoutProps {
 const BannerMain: React.FC<LayoutProps> = (props) => {
   const { title, description, url } = props
 
-  const youTubeID = getYouTubeId(String(
-    url));
+  const { t } = useTranslation('BannerMain')
+
+  const youTubeID = getYouTubeId(String(url));
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
@@ -35,7 +39,7 @@ const BannerMain: React.FC<LayoutProps> = (props) => {
 
         <Item>
           <VideoIframeResponsive youtubeID={youTubeID} />
-          <Button>Assistir</Button>
+          <Button>{t('button')}</Button>
         </Item>
       </Content>
     </Container>
