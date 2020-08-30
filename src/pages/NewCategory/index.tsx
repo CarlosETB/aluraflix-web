@@ -1,16 +1,30 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
 // Native
+import { useTranslation } from 'react-i18next'
 import { Link } from "react-router-dom";
 
 // Components
 import PageDefault from "components/PageDefault";
+import FormField from 'components/FormField'
 
 const NewCategory = () => {
-  const [categories, setCategories] = useState<string[]>([]);
-  const [formData, setFormData] = useState({
+  const { t } = useTranslation('NewCategory')
+
+  const values = {
     name: "",
-  });
+    color: "",
+    description: ""
+  }
+
+  interface Values {
+    name?: string;
+    color?: string;
+    description?: string;
+  }
+
+  const [categories, setCategories] = useState<any[]>([]);
+  const [formData, setFormData] = useState<Values>({});
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -27,17 +41,19 @@ const NewCategory = () => {
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    const { name } = formData;
+    const { name, color, description } = formData;
 
     const data = new FormData();
 
-    data.append("name", name);
+    data.append("name", String(name));
+    data.append("color", String(color));
+    data.append("description", String(description));
 
-    setCategories([...categories, name]);
+    setCategories([...categories, formData]);
 
-    alert(`
-      Nova categoria cadastrada: ${formData} 
-    `);
+    console.log('categories', categories)
+
+    alert(`Nova categoria cadastrada: ${name}`);
   }
 
   return (
@@ -45,17 +61,13 @@ const NewCategory = () => {
       <h1>Cadastro de Categoria: {formData.name}</h1>
 
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>
-            Nome da Categoria:
-            <input
-              id="name"
-              name="name"
-              type="text"
-              onChange={handleInputChange}
-            />
-          </label>
-        </div>
+
+        <FormField
+          type="text"
+          name="name"
+          label='Nome da Categoria'
+          onChange={handleInputChange}
+        />
 
         <div>
           <label>
@@ -68,24 +80,19 @@ const NewCategory = () => {
           </label>
         </div>
 
-        <div>
-          <label>
-            Nome da Categoria:
-            <input
-              id="name"
-              name="name"
-              type="text"
-              onChange={handleInputChange}
-            />
-          </label>
-        </div>
+        <FormField
+          type="color"
+          name="color"
+          label='Cor da Categoria'
+          onChange={handleInputChange}
+        />
 
         <button type="submit">Cadastrar</button>
       </form>
 
       <ul>
         {categories.map((category) => {
-          return <li key={category}>{category}</li>;
+          return <li key={(category.name)}>{category.name}</li>;
         })}
       </ul>
 

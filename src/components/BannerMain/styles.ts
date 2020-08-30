@@ -86,6 +86,7 @@ export const Category = styled.h1`
 `;
 
 export const Description = styled.p`
+  margin-right: 10px;
   @media (max-width: 800px) {
     display: none;
   }

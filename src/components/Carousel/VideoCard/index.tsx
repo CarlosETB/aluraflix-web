@@ -11,9 +11,9 @@ function getYouTubeId(youtubeURL: string) {
 }
 
 interface LayoutProps {
-  videoTitle: string;
-  videoURL: string;
-  categoryColor: string;
+  videoURL?: string;
+  videoTitle?: string;
+  categoryColor?: string;
 }
 
 const VideoCard: React.FC<LayoutProps> = (props) => {
@@ -23,7 +23,7 @@ const VideoCard: React.FC<LayoutProps> = (props) => {
 
   useEffect(() => {
     setImage(
-      `https://img.youtube.com/vi/${getYouTubeId(videoURL)}/hqdefault.jpg`
+      `https://img.youtube.com/vi/${getYouTubeId(String(videoURL))}/hqdefault.jpg`
     );
   }, []);
 

@@ -25,8 +25,7 @@ const BannerMain: React.FC<LayoutProps> = (props) => {
 
   const { t } = useTranslation('BannerMain')
 
-  const youTubeID = getYouTubeId(String(
-    url));
+  const youTubeID = getYouTubeId(String(url));
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
