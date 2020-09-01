@@ -13,6 +13,7 @@ export const Button = styled.button`
   display: inline-block;
   box-sizing: border-box;
   transition: opacity 0.3s;
+  background: var(--transparent);
   border: 1px solid var(--white);
 
   &:hover,

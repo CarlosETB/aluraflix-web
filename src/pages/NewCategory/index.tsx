@@ -1,21 +1,22 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
 // Native
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 // Components
 import PageDefault from "components/PageDefault";
-import FormField from 'components/FormField'
+import FormField from "components/FormField";
+import { Button } from "components/Button";
 
 const NewCategory = () => {
-  const { t } = useTranslation('NewCategory')
+  const { t } = useTranslation("NewCategory");
 
   const values = {
     name: "",
     color: "",
-    description: ""
-  }
+    description: "",
+  };
 
   interface Values {
     name?: string;
@@ -51,49 +52,47 @@ const NewCategory = () => {
 
     setCategories([...categories, formData]);
 
-    console.log('categories', categories)
+    console.log("categories", categories);
 
     alert(`Nova categoria cadastrada: ${name}`);
   }
 
   return (
     <PageDefault>
-      <h1>Cadastro de Categoria: {formData.name}</h1>
+      <h1>
+        Cadastro de Categoria:
+        {formData.name}
+      </h1>
 
       <form onSubmit={handleSubmit}>
-
         <FormField
           type="text"
           name="name"
-          label='Nome da Categoria'
+          label="Nome da Categoria"
           onChange={handleInputChange}
         />
 
-        <div>
-          <label>
-            Descrição da Categoria:
-            <textarea
-              id="description"
-              name="description"
-              onChange={handleTextAreaChange}
-            />
-          </label>
-        </div>
+        <FormField
+          type="textarea"
+          name="description"
+          label="Descrição da Categoria"
+          onChange={handleTextAreaChange}
+        />
 
         <FormField
           type="color"
           name="color"
-          label='Cor da Categoria'
+          label="Cor da Categoria"
           onChange={handleInputChange}
         />
 
-        <button type="submit">Cadastrar</button>
+        <Button type="submit">Cadastrar</Button>
       </form>
 
       <ul>
-        {categories.map((category) => {
-          return <li key={(category.name)}>{category.name}</li>;
-        })}
+        {categories.map((category) => (
+          <li key={category.name}>{category.name}</li>
+        ))}
       </ul>
 
       <Link to="/">Ir pra home</Link>

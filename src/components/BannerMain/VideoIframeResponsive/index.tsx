@@ -7,7 +7,9 @@ interface LayoutProps {
   youtubeID?: string;
 }
 
-const YouTubeIframeResponsive: React.FC<LayoutProps> = ({ youtubeID }) => {
+const YouTubeIframeResponsive: React.FC<LayoutProps> = (props) => {
+  const { youtubeID } = props
+
   return (
     <Container>
       <ResponsiveIframe
