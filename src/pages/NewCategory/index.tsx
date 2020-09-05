@@ -14,7 +14,7 @@ const NewCategory = () => {
 
   const values = {
     name: "",
-    color: "",
+    color: "#000",
     description: "",
   };
 
@@ -25,7 +25,7 @@ const NewCategory = () => {
   }
 
   const [categories, setCategories] = useState<any[]>([]);
-  const [formData, setFormData] = useState<Values>({});
+  const [formData, setFormData] = useState<Values>(values);
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -66,8 +66,8 @@ const NewCategory = () => {
 
       <form onSubmit={handleSubmit}>
         <FormField
-          type="text"
           name="name"
+          value={formData.name}
           label="Nome da Categoria"
           onChange={handleInputChange}
         />
@@ -75,14 +75,16 @@ const NewCategory = () => {
         <FormField
           type="textarea"
           name="description"
-          label="Descrição da Categoria"
+          value={formData.description}
+          label="Descrição"
           onChange={handleTextAreaChange}
         />
 
         <FormField
           type="color"
           name="color"
-          label="Cor da Categoria"
+          value={formData.color}
+          label="Cor"
           onChange={handleInputChange}
         />
 

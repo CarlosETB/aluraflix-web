@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 // Private
-import { Input } from "./styles";
+import { FormFieldWrapper, LabelText, Input, Label } from "./styles";
 
 interface LayoutProps {
-  type?: string;
+  value?: any;
   name?: string;
   label?: string;
   onChange?: any;
+  type?: "text" | "textarea" | "color";
 }
 
 const FormField: React.FC<LayoutProps> = (props) => {
-  const { type, name, label, onChange } = props;
+  const { type, name, label, onChange, value } = props;
 
   const [fieldType, setFieldType] = useState("");
   const [tag, setTag] = useState<any>();
@@ -29,18 +30,19 @@ const FormField: React.FC<LayoutProps> = (props) => {
   const fieldId = `id_${name}`;
 
   return (
-    <div>
-      <label htmlFor={fieldId}>
-        {`${label} :`}
+    <FormFieldWrapper>
+      <Label htmlFor={fieldId}>
         <Input
           id={fieldId}
           name={name}
           type={fieldType}
           onChange={onChange}
           as={tag}
+          value={value}
         />
-      </label>
-    </div>
+        <LabelText>{`${label} :`}</LabelText>
+      </Label>
+    </FormFieldWrapper>
   );
 };
 
