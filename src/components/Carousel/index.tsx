@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 
+// Components
+import VideoCard from "components/VideoCard";
+
 // Private
 import { Container, Title, ExtraLink } from "./styles";
 import Slider, { SliderItem } from "./Slider";
-import VideoCard from "./VideoCard";
 
 interface LayoutProps {
   category: {
@@ -34,14 +36,17 @@ interface Link_Extra {
 }
 
 const Carousel: React.FC<LayoutProps> = (props) => {
-  const { category: { title, color, link_extra, videos }, ignoreFirstVideo } = props
+  const {
+    category: { title, color, link_extra, videos },
+    ignoreFirstVideo,
+  } = props;
 
   const [categoryTitle, setCategoryTitle] = useState("");
   const [categoryColor, setCategoryColor] = useState("");
   const [categoryExtraLink, setCategoryExtraLink] = useState<Link_Extra>();
   const [video, setVideo] = useState<Videos[]>([]);
 
-  async function handleValues() {
+  useEffect(() => {
     if (title !== undefined) {
       setCategoryTitle(String(title));
     }
@@ -55,11 +60,7 @@ const Carousel: React.FC<LayoutProps> = (props) => {
     if (videos !== undefined) {
       setVideo(videos);
     }
-  }
-
-  useEffect(() => {
-    handleValues()
-  }, []);
+  }, [title, color, link_extra, videos]);
 
   return (
     <Container>

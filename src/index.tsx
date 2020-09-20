@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 // Private
 import Routes from "./routes";
 import "./index.css";
-import './locales'
+import "./locales";
 
 ReactDOM.render(
   <BrowserRouter>

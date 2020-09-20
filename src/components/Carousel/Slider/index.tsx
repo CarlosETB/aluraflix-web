@@ -21,7 +21,9 @@ interface LayoutProps {
   children?: ReactNode;
 }
 
-const Slider: React.FC<LayoutProps> = ({ children }) => {
+const Slider: React.FC<LayoutProps> = (props) => {
+  const { children } = props
+
   const settings = {
     dots: false,
     infinite: false,
