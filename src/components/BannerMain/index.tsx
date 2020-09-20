@@ -1,18 +1,14 @@
 import React from "react";
 
 // Native
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from "react-i18next";
+
+// Hooks
+import { useYoutubeId } from "hooks";
 
 // Private
 import { Container, Content, Button, Item, Description, Title } from "./styles";
 import VideoIframeResponsive from "./VideoIframeResponsive";
-
-function getYouTubeId(youtubeURL: string) {
-  return youtubeURL.replace(
-    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
-    "$7"
-  );
-}
 
 interface LayoutProps {
   url?: string;
@@ -21,11 +17,11 @@ interface LayoutProps {
 }
 
 const BannerMain: React.FC<LayoutProps> = (props) => {
-  const { title, description, url } = props
+  const { title, description, url } = props;
 
-  const { t } = useTranslation('BannerMain')
+  const { t } = useTranslation("BannerMain");
 
-  const youTubeID = getYouTubeId(String(url));
+  const youTubeID = useYoutubeId(String(url));
   const bgUrl = `https://img.youtube.com/vi/${youTubeID}/maxresdefault.jpg`;
 
   return (
@@ -39,7 +35,7 @@ const BannerMain: React.FC<LayoutProps> = (props) => {
 
         <Item>
           <VideoIframeResponsive youtubeID={youTubeID} />
-          <Button>{t('button')}</Button>
+          <Button>{t("button")}</Button>
         </Item>
       </Content>
     </Container>

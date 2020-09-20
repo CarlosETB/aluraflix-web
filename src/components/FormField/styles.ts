@@ -13,7 +13,7 @@ export const FormFieldWrapper = styled.div`
 export const Label = styled.label``;
 
 export const LabelText = styled.span`
-  color: #e5e5e5;
+  color: var(--grayMedium);
   height: 57px;
   position: absolute;
   top: 0;
@@ -31,9 +31,9 @@ interface InputProps {
   value: any[];
 }
 
-export const Input = styled.input<InputProps>`
-  background: #53585d;
-  color: #f5f5f5;
+const InputStyles = css`
+  background: var(--background);
+  color: var(--grayLight);
   display: block;
   width: 100%;
   height: 57px;
@@ -41,7 +41,7 @@ export const Input = styled.input<InputProps>`
   outline: 0;
   border: 0;
   border-top: 4px solid transparent;
-  border-bottom: 4px solid #53585d;
+  border-bottom: 4px solid var(--background);
   padding: 16px 16px;
   margin-bottom: 45px;
   resize: none;
@@ -53,8 +53,27 @@ export const Input = styled.input<InputProps>`
   &:focus:not([type="color"]) + ${LabelText} {
     transform: scale(0.6) translateY(-10px);
   }
+`;
+
+export const Input = styled.input<InputProps>`
+  ${InputStyles}
   ${({ value }) => {
-    const hasValue = value > 0;
+    const hasValue = value !== "";
+    return (
+      hasValue &&
+      css`
+        &:not([type="color"]) + ${LabelText} {
+          transform: scale(0.6) translateY(-10px);
+        }
+      `
+    );
+  }}
+`;
+
+export const TextArea = styled.textarea<InputProps>`
+  ${InputStyles}
+  ${({ value }) => {
+    const hasValue = value !== "";
     return (
       hasValue &&
       css`

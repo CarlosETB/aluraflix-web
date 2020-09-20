@@ -5,7 +5,7 @@ interface PropsContainer {
 }
 
 export const Container = styled.section`
-  color: #fff;
+  color: var(--white);
   height: 90vh;
   position: relative;
   background-size: cover;
@@ -36,7 +36,7 @@ export const Container = styled.section`
 
   &:after {
     bottom: 0;
-    background: linear-gradient(0deg, #141414 0%, transparent 100%);
+    background: linear-gradient(0deg, var(--secondary) 0%, transparent 100%);
   }
 `;
 

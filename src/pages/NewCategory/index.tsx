@@ -14,7 +14,7 @@ const NewCategory = () => {
 
   const values = {
     name: "",
-    color: "#000",
+    color: "",
     description: "",
   };
 
@@ -52,23 +52,18 @@ const NewCategory = () => {
 
     setCategories([...categories, formData]);
 
-    console.log("categories", categories);
-
     alert(`Nova categoria cadastrada: ${name}`);
   }
 
   return (
     <PageDefault>
-      <h1>
-        Cadastro de Categoria:
-        {formData.name}
-      </h1>
+      <h1>{`${t("title")}: ${formData.name}`}</h1>
 
       <form onSubmit={handleSubmit}>
         <FormField
           name="name"
           value={formData.name}
-          label="Nome da Categoria"
+          label={t("nameLabel")}
           onChange={handleInputChange}
         />
 
@@ -76,7 +71,7 @@ const NewCategory = () => {
           type="textarea"
           name="description"
           value={formData.description}
-          label="Descrição"
+          label={t("descriptionLabel")}
           onChange={handleTextAreaChange}
         />
 
@@ -84,11 +79,11 @@ const NewCategory = () => {
           type="color"
           name="color"
           value={formData.color}
-          label="Cor"
+          label={t("colorLabel")}
           onChange={handleInputChange}
         />
 
-        <Button type="submit">Cadastrar</Button>
+        <Button type="submit">{t("button")}</Button>
       </form>
 
       <ul>

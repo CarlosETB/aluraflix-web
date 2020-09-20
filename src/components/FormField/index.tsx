@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 // Private
-import { FormFieldWrapper, LabelText, Input, Label } from "./styles";
+import { FormFieldWrapper, LabelText, Input, TextArea, Label } from "./styles";
 
 interface LayoutProps {
   value?: any;
@@ -14,32 +14,24 @@ interface LayoutProps {
 const FormField: React.FC<LayoutProps> = (props) => {
   const { type, name, label, onChange, value } = props;
 
-  const [fieldType, setFieldType] = useState("");
-  const [tag, setTag] = useState<any>();
+  const id = `id_${name}`;
 
-  useEffect(() => {
-    if (type === "textarea") {
-      setFieldType("text");
-      setTag("textarea");
-    } else {
-      setFieldType(String(type));
-      setTag(undefined);
-    }
-  }, []);
-
-  const fieldId = `id_${name}`;
+  const settings = {
+    id: id,
+    name: name,
+    value: value,
+    onChange: onChange,
+  };
 
   return (
     <FormFieldWrapper>
-      <Label htmlFor={fieldId}>
-        <Input
-          id={fieldId}
-          name={name}
-          type={fieldType}
-          onChange={onChange}
-          as={tag}
-          value={value}
-        />
+      <Label htmlFor={id}>
+        {type === "textarea" ? (
+          <TextArea {...settings} />
+        ) : (
+          <Input {...settings} type={type} />
+        )}
+
         <LabelText>{`${label} :`}</LabelText>
       </Label>
     </FormFieldWrapper>
