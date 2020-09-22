@@ -26,9 +26,9 @@
     "typescript": "~3.7.2"
   },
   "scripts": {
-    "server": "node ./src/services/Server/index.ts",
+    "server": "node ./server.js",
     "dev": "concurrently \"react-scripts start\" \"npm run server\"",
-    "start": "npm run dev",
+    "start": "npm run server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
