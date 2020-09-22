@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 
 // Native
 import { useTranslation } from "react-i18next";
@@ -55,6 +55,16 @@ const NewCategory = () => {
     alert(`Nova categoria cadastrada: ${name}`);
   }
 
+  useEffect(() => {
+    const URL = "http://localhost:8080/categories";
+
+    fetch(URL).then(async (res) => {
+      const response = await res.json();
+
+      setCategories([...response]);
+    });
+  }, [formData]);
+
   return (
     <PageDefault>
       <h1>{`${t("title")}: ${formData.name}`}</h1>
@@ -85,6 +95,8 @@ const NewCategory = () => {
 
         <Button type="submit">{t("button")}</Button>
       </form>
+
+      {categories.length === 0 && <div>Loading...</div>}
 
       <ul>
         {categories.map((category) => (

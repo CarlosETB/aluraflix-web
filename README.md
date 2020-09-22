@@ -44,7 +44,7 @@ Aplicação feita em **React** inspirada no design do serviço de streaming **Ne
 Para iniciar o servidor
 
 ```sh
-    npm start
+    npm run dev
 ```
 
 <br />
@@ -59,9 +59,10 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[Styled Components](https://styled-components.com/)**
 - **[React Router Dom](https://reactrouter.com/)**
 - **[React Slick](https://react-slick.neostack.com/)**
+- **[Json Server](https://github.com/typicode/json-server/)**
+- **[Concurrently](https://github.com/kimmobrunfeldt/concurrently)**
 - **[i18next](https://www.i18next.com/)**
 - **[React i18next](https://www.i18next.com/)**
-
 
 \* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
 

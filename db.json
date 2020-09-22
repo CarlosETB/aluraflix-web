@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Front End",
+      "description": "Formação de Front End na Alura",
+      "color": "#6BD1FF"
+    },
+    {
+      "id": 2,
+      "name": "Back End",
+      "description": "Cursos de Back End na Alura",
+      "color": "#00C86F"
+    }
+  ]
+}
