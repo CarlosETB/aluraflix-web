@@ -2,11 +2,11 @@
 
 <!-- PROJECT SHIELDS -->
 
-[![GitHub issues](https://img.shields.io/github/issues-raw/CarlosETB/ecoleta-mobile.svg)](https://github.com/CarlosETB/ecoleta-mobile/issues)
-[![GitHub last commit](https://img.shields.io/github/last-commit/CarlosETB/ecoleta-mobile.svg)](https://github.com/CarlosETB/ecoleta-mobile/commits/master)
-![GitHub language count](https://img.shields.io/github/languages/count/CarlosETB/ecoleta-api?color=%2304D361)
-![GitHub repository size](https://img.shields.io/github/repo-size/CarlosETB/ecoleta-api)
-[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/CarlosETB/ecoleta-mobile/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues-raw/CarlosETB/aluraflix-web.svg)](https://github.com/CarlosETB/aluraflix-web/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/CarlosETB/aluraflix-web.svg)](https://github.com/CarlosETB/aluraflix-web/commits/master)
+![GitHub language count](https://img.shields.io/github/languages/count/CarlosETB/aluraflix-web?color=%2304D361)
+![GitHub repository size](https://img.shields.io/github/repo-size/CarlosETB/aluraflix-web)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/CarlosETB/aluraflix-web/stargazers)
 [![Made by Rocketseat](https://img.shields.io/badge/made%20by-Alura-%232a7ae4)](https://www.alura.com.br/)
 
 <!-- PROJECT LOGO -->
@@ -61,6 +61,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[React Slick](https://react-slick.neostack.com/)**
 - **[Json Server](https://github.com/typicode/json-server/)**
 - **[Concurrently](https://github.com/kimmobrunfeldt/concurrently)**
+- **[i18next](https://www.i18next.com/)**
+- **[React i18next](https://www.i18next.com/)**
 
 \* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
 
