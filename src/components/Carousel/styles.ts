@@ -40,7 +40,8 @@ export const ExtraLink = styled.a`
 
 export const Container = styled.section`
   color: white;
-  min-height: 197px;
   margin-left: 5%;
+  margin-right: 5%;
+  min-height: 197px;
   margin-bottom: 16px;
 `;
