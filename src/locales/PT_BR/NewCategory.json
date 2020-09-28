@@ -1,6 +1,6 @@
 {
-  "title": "Cadastro de Categoria",
-  "nameLabel": "Nome da Categoria",
+  "pageTitle": "Cadastro de Categoria",
+  "titleLabel": "Nome da Categoria",
   "colorLabel": "Cor",
   "descriptionLabel": "Descrição",
   "button": "Cadastrar"
