@@ -42,7 +42,9 @@ const NewCategory = () => {
   }
 
   useEffect(() => {
-    const URL = "http://localhost:8080/categories";
+    const URL = window.location.hostname.includes("localhost")
+      ? "http://localhost:8080/categories"
+      : "http://carlostonholi-aluraflix/categories";
 
     fetch(URL).then(async (res) => {
       const response = await res.json();
