@@ -61,9 +61,9 @@ const Home = () => {
               <Carousel ignoreFirstVideo category={initialData[0]} />
             </div>
           );
+        } else {
+          return <Carousel key={data.id} category={data} />;
         }
-
-        return <Carousel key={data.id} category={data} />;
       })}
     </PageDefault>
   );

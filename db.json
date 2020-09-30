@@ -220,6 +220,17 @@
       "url": "https://www.youtube.com/watch?v=5t2gq3xJZ9o",
       "categoryId": 6,
       "id": 55
+    },
+    {
+      "categoryId": 1,
+      "id": 56
+    },
+    {
+      "titulo": "Consumindo APIs externas no React (Exibindo o clima local)",
+      "url": "https://www.youtube.com/watch?v=ye0XSzbU2so&t=1s",
+      "category": "Front - End",
+      "categoryId": 1,
+      "id": 57
     }
   ]
 }

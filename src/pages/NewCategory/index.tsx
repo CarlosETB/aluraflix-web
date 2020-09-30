@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 
 // Native
 import { useTranslation } from "react-i18next";
@@ -37,8 +37,6 @@ const NewCategory = () => {
     data.append("description", String(description));
 
     setCategories([...categories, formData]);
-
-    alert(`Nova categoria cadastrada: ${title}`);
   }
 
   useEffect(() => {
