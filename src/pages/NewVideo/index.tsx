@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 
 // Native
 import { useTranslation } from "react-i18next";
@@ -13,17 +13,27 @@ import { Button } from "components/Button";
 import { useForm } from "hooks";
 
 // Repositories
-import { videoRepository } from "repositories";
+import { videoRepository, categoryRepository } from "repositories";
+
+interface PropsVideo {}
 
 const NewVideo = () => {
   const history = useHistory();
   const { t } = useTranslation("NewVideos");
+  const [categories, setCategories] = useState([]);
 
   const values = {
     title: "",
     url: "",
     category: "",
   };
+
+  useEffect(() => {
+    categoryRepository.getAll().then((res) => {
+      setCategories(res);
+    });
+    console.log(categories);
+  }, []);
 
   const { formData, handleInputChange } = useForm(values);
 
@@ -38,12 +48,18 @@ const NewVideo = () => {
     data.append("url", String(url));
     data.append("category", String(category));
 
+    const categoryId = categories.find((res: any) => {
+      return res.title === formData.category;
+    });
+
+    console.log("Cadastrado", categoryId && categoryId.id);
+
     videoRepository
       .create({
-        titulo: formData.title,
+        title: formData.title,
         url: formData.url,
         category: formData.category,
-        categoryId: 1,
+        categoryId,
       })
       .then(() => {
         history.push("/");
@@ -52,7 +68,7 @@ const NewVideo = () => {
 
   return (
     <PageDefault>
-      <h1>{`${t("pageTitle")}: ${formData.title}`}</h1>
+      <h1>{`${t("pageTitle")}`}</h1>
 
       <form onSubmit={handleSubmit}>
         <FormField
