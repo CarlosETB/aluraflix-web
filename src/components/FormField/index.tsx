@@ -1,3 +1,4 @@
+import { string } from "prop-types";
 import React from "react";
 
 // Private
@@ -8,19 +9,23 @@ interface LayoutProps {
   name?: string;
   label?: string;
   onChange?: any;
+  suggestions?: any[];
   type?: "text" | "textarea" | "color";
 }
 
 const FormField: React.FC<LayoutProps> = (props) => {
-  const { type, name, label, onChange, value } = props;
+  const { type, name, label, suggestions, onChange, value } = props;
 
   const id = `id_${name}`;
+  const hasSuggestions = Boolean(suggestions && suggestions.length);
 
   const settings = {
-    id: id,
-    name: name,
-    value: value,
-    onChange: onChange,
+    id,
+    name,
+    value,
+    onChange,
+    list: `suggestionFor_${id}`,
+    autoComplete: hasSuggestions ? "off" : "on",
   };
 
   return (
@@ -33,6 +38,20 @@ const FormField: React.FC<LayoutProps> = (props) => {
         )}
 
         <LabelText>{`${label} :`}</LabelText>
+
+        {hasSuggestions && (
+          <datalist id={`suggestionFor_${id}`}>
+            {suggestions &&
+              suggestions.map((suggestion) => (
+                <option
+                  value={suggestion}
+                  key={`suggestionFor_${id}_option_${suggestion}`}
+                >
+                  {suggestion}
+                </option>
+              ))}
+          </datalist>
+        )}
       </Label>
     </FormFieldWrapper>
   );

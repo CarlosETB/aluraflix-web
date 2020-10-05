@@ -1,33 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // Native
-import { useTranslation } from 'react-i18next'
+import { useTranslation } from "react-i18next";
 
 // Components
 import PageDefault from "components/PageDefault";
 import BannerMain from "components/BannerMain";
 import Carousel from "components/Carousel";
 
-// Data
-import initialData from "data/initial_data.json";
+// Repositories
+import { categoryRepository } from "repositories";
+
+interface Values {
+  id?: number;
+  videos?: any;
+  category: {
+    title?: string;
+    color?: string;
+    link_extra?: {
+      text: string;
+      url: string;
+    };
+    videos?: {
+      id: number;
+      url: string;
+      title: string;
+      categoryId: number;
+    }[];
+  };
+}
 
 const Home = () => {
-  const { t } = useTranslation('Home')
+  const { t } = useTranslation("Home");
+  const [initialData, setInitialData] = useState<Values[]>([]);
+
+  useEffect(() => {
+    categoryRepository
+      .getAllVideos()
+      .then((res) => {
+        setInitialData(res);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, []);
 
   return (
     <PageDefault noPadding>
-      <BannerMain
-        description={t('description')}
-        url={initialData.category[0].videos[0].url}
-        title={initialData.category[0].videos[0].title}
-      />
+      {initialData.length === 0 && <div>Loading...</div>}
 
-      <Carousel ignoreFirstVideo category={initialData.category[0]} />
-      <Carousel ignoreFirstVideo category={initialData.category[1]} />
-      <Carousel ignoreFirstVideo category={initialData.category[2]} />
-      <Carousel ignoreFirstVideo category={initialData.category[3]} />
-      <Carousel ignoreFirstVideo category={initialData.category[4]} />
-      <Carousel ignoreFirstVideo category={initialData.category[5]} />
+      {initialData.map((data, index) => {
+        if (index === 0) {
+          return (
+            <div key={data.id}>
+              <BannerMain
+                description={t("description")}
+                url={initialData[0].videos[0].url}
+                title={initialData[0].videos[0].title}
+              />
+              <Carousel ignoreFirstVideo category={initialData[0]} />
+            </div>
+          );
+        } else {
+          return <Carousel key={data.id} category={data} />;
+        }
+      })}
     </PageDefault>
   );
 };

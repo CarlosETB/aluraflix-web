@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 
 // Native
 import { useTranslation } from "react-i18next";
@@ -37,12 +37,12 @@ const NewCategory = () => {
     data.append("description", String(description));
 
     setCategories([...categories, formData]);
-
-    alert(`Nova categoria cadastrada: ${title}`);
   }
 
   useEffect(() => {
-    const URL = "http://localhost:8080/categories";
+    const URL = window.location.hostname.includes("localhost")
+      ? "http://localhost:8080/categories"
+      : "http://carlostonholi-aluraflix/categories";
 
     fetch(URL).then(async (res) => {
       const response = await res.json();
