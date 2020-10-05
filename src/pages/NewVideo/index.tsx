@@ -15,12 +15,22 @@ import { useForm } from "hooks";
 // Repositories
 import { videoRepository, categoryRepository } from "repositories";
 
-interface PropsVideo {}
+interface PropsCategory {
+  id?: number;
+  title?: string;
+}
+
+interface PropsVideo {
+  title?: string;
+  url?: string;
+  category?: string;
+}
 
 const NewVideo = () => {
   const history = useHistory();
   const { t } = useTranslation("NewVideos");
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<PropsCategory[]>([]);
+  const categoryTitles = categories.map(({ title }) => title);
 
   const values = {
     title: "",
@@ -29,10 +39,10 @@ const NewVideo = () => {
   };
 
   useEffect(() => {
+    console.log("Titulos", categoryTitles);
     categoryRepository.getAll().then((res) => {
       setCategories(res);
     });
-    console.log(categories);
   }, []);
 
   const { formData, handleInputChange } = useForm(values);
@@ -52,14 +62,12 @@ const NewVideo = () => {
       return res.title === formData.category;
     });
 
-    console.log("Cadastrado", categoryId && categoryId.id);
-
     videoRepository
       .create({
         title: formData.title,
         url: formData.url,
         category: formData.category,
-        categoryId,
+        categoryId: categoryId && categoryId.id,
       })
       .then(() => {
         history.push("/");
@@ -90,6 +98,7 @@ const NewVideo = () => {
           value={formData.category}
           label={t("categoryLabel")}
           onChange={handleInputChange}
+          suggestions={categoryTitles}
         />
 
         <Button type="submit">{t("button")}</Button>
