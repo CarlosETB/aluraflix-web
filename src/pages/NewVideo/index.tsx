@@ -15,7 +15,7 @@ import Link from "components/Link";
 import { useForm } from "hooks";
 
 // Interface
-import { Category } from "interface";
+import { Category, Video } from "interface";
 
 // Repositories
 import { videoRepository, categoryRepository } from "repositories";
@@ -24,6 +24,7 @@ const NewVideo = () => {
   const history = useHistory();
   const { t } = useTranslation("NewVideos");
   const [categories, setCategories] = useState<Category[]>([]);
+  const [videos, setVideos] = useState<Video[]>([]);
   const categoryTitles = categories.map(({ title }) => title);
 
   const values = {
@@ -57,18 +58,26 @@ const NewVideo = () => {
       return res.title === formData.category;
     });
 
-    videoRepository
-      .create({
-        title: formData.title,
-        url: formData.url,
-        category: formData.category,
-        description: formData.description,
-        categoryId: categoryId && categoryId.id,
-      })
-      .then(() => {
-        clearForm();
-        history.push("/");
-      });
+    const videoId = videos.find((res) => {
+      return res.url === formData.url;
+    });
+
+    if (videoId?.title === "") {
+      videoRepository
+        .create({
+          title: formData.title,
+          url: formData.url,
+          category: formData.category,
+          description: formData.description,
+          categoryId: categoryId && categoryId.id,
+        })
+        .then(() => {
+          clearForm();
+          history.push("/");
+        });
+    } else {
+      alert("Vídeo já cadastrado");
+    }
   }
 
   return (

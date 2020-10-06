@@ -5,9 +5,9 @@ interface PropsContainer {
 }
 
 export const Container = styled.section`
-  color: var(--white);
-  height: 90vh;
+  height: 100vh;
   position: relative;
+  color: var(--white);
   background-size: cover;
   background-position: center;
   background-image: ${(props: PropsContainer) => `url(${props.url})`};

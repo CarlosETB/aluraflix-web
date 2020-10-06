@@ -50,11 +50,13 @@ const NewCategory = () => {
     data.append("color", String(color));
     data.append("description", String(description));
 
-    const categoryId = categories.find((res) => {
+    const videoId = categories.find((res) => {
       return res.title === formData.title;
     });
 
-    if (categoryId?.title === "") {
+    console.log("Res", videoId?.title);
+
+    if (videoId?.title === undefined) {
       setCategories([...categories, formData]);
       categoryRepository
         .create({
@@ -79,10 +81,7 @@ const NewCategory = () => {
 
   return (
     <PageDefault>
-      <Title>
-        {t("pageTitle")}
-        <Link to="/">{t("buttonLink")}</Link>
-      </Title>
+      <Title>{t("pageTitle")}</Title>
 
       <form onSubmit={handleSubmit}>
         <FormField
@@ -110,14 +109,6 @@ const NewCategory = () => {
 
         <Button type="submit">{t("button")}</Button>
       </form>
-
-      {categories.length === 0 && <div>Loading...</div>}
-
-      <ul>
-        {categories.map((category) => (
-          <li key={category.title}>{category.title}</li>
-        ))}
-      </ul>
     </PageDefault>
   );
 };

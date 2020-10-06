@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   outline: none;
+  margin: 0 10px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
