@@ -17,8 +17,13 @@ export default (values: any) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const clearForm = async () => {
+    setFormData(values);
+  };
+
   return {
     formData,
+    clearForm,
     handleInputChange,
     handleTextAreaChange,
   };

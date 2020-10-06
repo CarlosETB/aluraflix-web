@@ -19,9 +19,15 @@ const Header = () => {
         <img className="Logo" src={Logo} alt="AluraFlix logo" />
       </Link>
 
-      <Button as={Link} className="ButtonLink" to="/cadastro/video">
-        Novo vídeo
-      </Button>
+      <div>
+        <Button as={Link} className="ButtonLink" to="/cadastro/video">
+          Novo vídeo
+        </Button>
+
+        <Button as={Link} className="ButtonLink" to="/cadastro/categoria">
+          Nova Categoria
+        </Button>
+      </div>
     </nav>
   );
 };

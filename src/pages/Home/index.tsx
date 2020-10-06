@@ -26,6 +26,7 @@ interface Values {
       url: string;
       title: string;
       categoryId: number;
+      description?: string;
     }[];
   };
 }
@@ -54,15 +55,17 @@ const Home = () => {
           return (
             <div key={data.id}>
               <BannerMain
-                description={t("description")}
                 url={initialData[0].videos[0].url}
                 title={initialData[0].videos[0].title}
+                description={initialData[0].videos[0].description}
               />
               <Carousel ignoreFirstVideo category={initialData[0]} />
             </div>
           );
         } else {
-          return <Carousel key={data.id} category={data} />;
+          return (
+            data.videos.length > 0 && <Carousel key={data.id} category={data} />
+          );
         }
       })}
     </PageDefault>

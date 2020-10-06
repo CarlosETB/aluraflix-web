@@ -3,5 +3,6 @@
   "titleLabel": "Nome da Categoria",
   "colorLabel": "Cor",
   "descriptionLabel": "Descrição",
-  "button": "Cadastrar"
+  "button": "Cadastrar",
+  "buttonLink": "Editar"
 }
