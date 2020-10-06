@@ -2,17 +2,26 @@ import React, { useState, useEffect, FormEvent } from "react";
 
 // Native
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Components
 import PageDefault from "components/PageDefault";
 import FormField from "components/FormField";
 import { Button } from "components/Button";
+import { Title } from "components/Text";
+import Link from "components/Link";
 
 // Hooks
 import { useForm } from "hooks";
 
+// Interface
+import { Category } from "interface";
+
+// Repositories
+import { categoryRepository } from "repositories";
+
 const NewCategory = () => {
+  const history = useHistory();
   const { t } = useTranslation("NewCategory");
 
   const values = {
@@ -21,11 +30,16 @@ const NewCategory = () => {
     description: "",
   };
 
-  const { formData, handleInputChange, handleTextAreaChange } = useForm(values);
+  const {
+    formData,
+    clearForm,
+    handleInputChange,
+    handleTextAreaChange,
+  } = useForm(values);
 
-  const [categories, setCategories] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  async function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const { title, color, description } = formData;
@@ -36,24 +50,39 @@ const NewCategory = () => {
     data.append("color", String(color));
     data.append("description", String(description));
 
-    setCategories([...categories, formData]);
+    const categoryId = categories.find((res) => {
+      return res.title === formData.title;
+    });
+
+    if (categoryId?.title === "") {
+      setCategories([...categories, formData]);
+      categoryRepository
+        .create({
+          title: formData.title,
+          color: formData.color,
+          description: formData.description,
+        })
+        .then(() => {
+          clearForm();
+          history.push("/");
+        });
+    } else {
+      alert("Categoria já cadastrada");
+    }
   }
 
   useEffect(() => {
-    const URL = window.location.hostname.includes("localhost")
-      ? "http://localhost:8080/categories"
-      : "http://carlostonholi-aluraflix/categories";
-
-    fetch(URL).then(async (res) => {
-      const response = await res.json();
-
-      setCategories([...response]);
+    categoryRepository.getAll().then((res) => {
+      setCategories(res);
     });
   }, []);
 
   return (
     <PageDefault>
-      <h1>{`${t("pageTitle")}: ${formData.title}`}</h1>
+      <Title>
+        {t("pageTitle")}
+        <Link to="/">{t("buttonLink")}</Link>
+      </Title>
 
       <form onSubmit={handleSubmit}>
         <FormField
@@ -89,8 +118,6 @@ const NewCategory = () => {
           <li key={category.title}>{category.title}</li>
         ))}
       </ul>
-
-      <Link to="/">Ir pra home</Link>
     </PageDefault>
   );
 };

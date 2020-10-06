@@ -2,63 +2,58 @@ import React, { useState, useEffect, FormEvent } from "react";
 
 // Native
 import { useTranslation } from "react-i18next";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Components
 import PageDefault from "components/PageDefault";
 import FormField from "components/FormField";
 import { Button } from "components/Button";
+import { Title } from "components/Text";
+import Link from "components/Link";
 
 // Hooks
 import { useForm } from "hooks";
 
+// Interface
+import { Category } from "interface";
+
 // Repositories
 import { videoRepository, categoryRepository } from "repositories";
-
-interface PropsCategory {
-  id?: number;
-  title?: string;
-}
-
-interface PropsVideo {
-  title?: string;
-  url?: string;
-  category?: string;
-}
 
 const NewVideo = () => {
   const history = useHistory();
   const { t } = useTranslation("NewVideos");
-  const [categories, setCategories] = useState<PropsCategory[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const categoryTitles = categories.map(({ title }) => title);
 
   const values = {
     title: "",
     url: "",
     category: "",
+    description: "",
   };
 
   useEffect(() => {
-    console.log("Titulos", categoryTitles);
     categoryRepository.getAll().then((res) => {
       setCategories(res);
     });
   }, []);
 
-  const { formData, handleInputChange } = useForm(values);
+  const { formData, clearForm, handleInputChange } = useForm(values);
 
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    const { title, url, category } = formData;
+    const { title, url, category, description } = formData;
 
     const data = new FormData();
 
     data.append("title", String(title));
     data.append("url", String(url));
     data.append("category", String(category));
+    data.append("description", String(description));
 
-    const categoryId = categories.find((res: any) => {
+    const categoryId = categories.find((res) => {
       return res.title === formData.category;
     });
 
@@ -67,16 +62,21 @@ const NewVideo = () => {
         title: formData.title,
         url: formData.url,
         category: formData.category,
+        description: formData.description,
         categoryId: categoryId && categoryId.id,
       })
       .then(() => {
+        clearForm();
         history.push("/");
       });
   }
 
   return (
     <PageDefault>
-      <h1>{`${t("pageTitle")}`}</h1>
+      <Title>
+        {`${t("pageTitle")}`}
+        <Link to="/cadastro/categoria">{t("buttonLink")}</Link>
+      </Title>
 
       <form onSubmit={handleSubmit}>
         <FormField
@@ -101,10 +101,16 @@ const NewVideo = () => {
           suggestions={categoryTitles}
         />
 
+        <FormField
+          type="textarea"
+          name="description"
+          value={formData.description}
+          label={t("descriptionLabel")}
+          onChange={handleInputChange}
+        />
+
         <Button type="submit">{t("button")}</Button>
       </form>
-
-      <Link to="/cadastro/categoria">Cadastrar Categoria</Link>
     </PageDefault>
   );
 };

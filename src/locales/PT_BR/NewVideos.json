@@ -3,5 +3,7 @@
   "titleLabel": "Título do vídeo",
   "urlLabel": "URL",
   "categoryLabel": "Categoria",
-  "button": "Cadastrar"
+  "descriptionLabel": "Descrição",
+  "button": "Cadastrar",
+  "buttonLink": "Cadastrar Categoria"
 }

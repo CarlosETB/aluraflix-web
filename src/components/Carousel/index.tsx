@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 // Components
 import VideoCard from "components/VideoCard";
 
+// Interface
+import { Video } from "interface";
+
 // Private
 import { Container, Title, ExtraLink } from "./styles";
 import Slider, { SliderItem } from "./Slider";
@@ -25,11 +28,6 @@ interface LayoutProps {
   ignoreFirstVideo?: boolean;
 }
 
-interface Videos {
-  title: string;
-  url: string;
-}
-
 interface Link_Extra {
   text: string;
   url: string;
@@ -44,7 +42,7 @@ const Carousel: React.FC<LayoutProps> = (props) => {
   const [categoryTitle, setCategoryTitle] = useState("");
   const [categoryColor, setCategoryColor] = useState("");
   const [categoryExtraLink, setCategoryExtraLink] = useState<Link_Extra>();
-  const [video, setVideo] = useState<Videos[]>([]);
+  const [video, setVideo] = useState<Video[]>([]);
 
   useEffect(() => {
     if (title !== undefined) {
